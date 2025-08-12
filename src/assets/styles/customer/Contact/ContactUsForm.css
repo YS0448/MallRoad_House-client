@@ -1,0 +1,87 @@
+.contactUsForm{
+    padding: 50px;
+}
+
+.contactUsForm .formTitle {
+  font-size: 30px;
+  /* color: #7c6845; */
+  /* color: #7c6845; */
+  
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Forum', serif; */
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+
+.contactUsForm .formTitle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 4px;
+  width: 60%;
+  background-color: #d4b06a; 
+  /* background-color: var(--color-accent-2);  */
+  border-radius: 2px;
+}
+
+.contactUsForm form{
+    padding-top: 30px;
+}
+
+.contactUsForm .input_style{
+    padding: 6px 12px;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.contactUsForm .labelText{
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.textareaField{
+    padding: 6px 12px;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    height: 100px;
+}
+
+
+
+.submitButton {
+    padding: 10px 20px;
+    color: white;
+    background-color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: 30px;
+    margin-top: 30px;
+}
+
+
+
+.contactUsForm .captcha-section .captcha-input{
+    padding: 6px 12px 6px 12px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.contactUsForm .captcha-section .refresh_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.contactUsForm .captcha-image{
+    background-color: white;
+    
+}

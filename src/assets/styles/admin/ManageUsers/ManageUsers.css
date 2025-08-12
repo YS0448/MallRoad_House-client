@@ -1,0 +1,13 @@
+.manage_users_title {
+  color: var(--color-accent);
+}
+
+.search_input{
+    outline: 2px solid gray;    
+}
+
+@media (min-width: 768px) {
+  .search_input {
+    width: 400px ;
+  }
+}

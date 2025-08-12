@@ -1,0 +1,10 @@
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+
+.footer .web_logo{
+  width: 80px;
+}

@@ -1,0 +1,26 @@
+.status-pending {
+  background-color: transparent; 
+  color: #ffc107; /* Yellow text */
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  /* border: 1px solid #ffc107;  */
+}
+
+.status-cancelled {
+  background-color: transparent; 
+  color: #dc3545; /* Red text */
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  /* border: 1px solid #dc3545;  */
+}
+
+.status-delivered {
+  background-color: transparent; 
+  color: #28a745; /* Green text */
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  /* border: 1px solid #28a745;  */
+}

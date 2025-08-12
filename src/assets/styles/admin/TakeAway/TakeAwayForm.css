@@ -1,0 +1,73 @@
+.takeaway-form .form-title {
+  color: var(--color-accent);
+}
+
+.section-title {
+  font-weight: 600;
+  color: #495057;
+}
+
+.food-image-placeholder {
+  height: 160px;
+  width: 100%;
+  background-color: #f8f9fa;
+  border: 2px dashed #dee2e6;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.food-image-placeholder:hover {
+  background-color: #e9ecef;
+}
+
+.food-image-placeholder .icon {
+  font-size: 40px;
+  color: #6c757d;
+  margin-bottom: 8px;
+}
+
+.preview-hint {
+  font-size: 0.85rem;
+  color: #6c757d;
+  text-align: center;
+  margin-top: 6px;
+}
+
+.food-image-preview {
+  height: 160px;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.image-preview-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.description-area {
+  resize: none;
+}
+
+.upload-label{
+  width: 100%;
+}
+
+.preview-hint svg {
+  vertical-align: middle;
+  color: #6c757d;
+}
+
+.form-label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #333;
+}

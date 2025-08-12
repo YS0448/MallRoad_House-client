@@ -1,0 +1,62 @@
+.profile-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f1e9d8, #fffbe9);
+  padding: 2rem;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.9);
+  /* backdrop-filter: blur(10px); */
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+}
+
+.profile-avatar {
+  margin-bottom: 1rem;
+}
+
+.profile-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.profile-email {
+  color: #666;
+  margin-top: 0.3rem;
+}
+
+.profile-role {
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+  color: #999;
+  text-transform: capitalize;
+}
+
+.edit-button {
+  margin-top: 1.5rem;
+  padding: 10px 30px;
+  background-color: #e0c9a6;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #c7b08a;
+}

@@ -1,0 +1,113 @@
+.my-orders {
+  padding:  60px 10px 60px 10px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.order-card {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.order-card header h2 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.5rem;
+}
+
+.status-badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 0.9rem;
+}
+
+/* Example status colors */
+.status-pending {
+  background-color: #f0ad4e;
+}
+.status-completed {
+  background-color: #5cb85c;
+}
+.status-cancelled {
+  background-color: #d9534f;
+}
+
+.order-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.order-items-table th,
+.order-items-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.order-items-table th {
+  background-color: #f7f7f7;
+  font-weight: 600;
+}
+
+.order-items-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Allergens icons styling */
+.allergen-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  vertical-align: middle;
+  fill: #666; /* If SVG, set fill color */
+  /* Or you can add more styling if they are images */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.pagination button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.pagination button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.pagination button:not(:disabled):hover {
+  background-color: #0056b3;
+}
+
+/* Loading, error, no-orders styles */
+.loading, .error, .no-orders {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  color: #666;
+}
+.error {
+  color: #d9534f;
+}

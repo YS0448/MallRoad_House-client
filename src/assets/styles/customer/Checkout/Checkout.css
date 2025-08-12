@@ -1,0 +1,63 @@
+/* Background & Layout */
+.checkout-wrapper {
+  background-color: #f5f6fa;
+  min-height: 100vh;
+}
+
+/* Attractive gradient header */
+.checkout-header {
+  background: linear-gradient(135deg, #4cafef, #1e88e5);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+/* Cards */
+.checkout-card,
+.checkout-summary-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease-in-out;
+}
+
+.checkout-card:hover,
+.checkout-summary-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Section title */
+.section-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 0.5rem;
+}
+
+/* Sticky Summary */
+.sticky-summary {
+  position: sticky;
+  top: 100px;
+}
+
+@media (max-width: 992px) {
+  .sticky-summary {
+    position: static;
+    top: auto;
+  }
+}
+
+/* Buttons inside order summary */
+.checkout-summary-card button {
+  font-size: 1.05rem;
+  padding: 10px 16px;
+  border-radius: 8px;
+}
+
+.checkout-summary-card button.btn-success {
+  background: linear-gradient(135deg, #43a047, #2e7d32);
+  border: none;
+}
+
+.checkout-summary-card button.btn-success:hover {
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
+}

@@ -1,0 +1,67 @@
+.gallery-container {
+  padding: 20px;
+}
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -15px; /* gutter size offset */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 15px; /* gutter size */
+  background-clip: padding-box;
+}
+/* Each item */
+/* Each item */
+.gallery-item {
+  position: relative;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.4s ease; /* smooth zoom */
+}
+
+/* Zoom on hover */
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Overlay container for name + description */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  
+  /* Start hidden */
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect to show overlay */
+.gallery-item:hover .overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.overlay .image_name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.overlay .image_description {
+  font-size: 14px;
+  margin-top: 5px;
+}

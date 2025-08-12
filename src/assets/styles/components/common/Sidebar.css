@@ -1,0 +1,75 @@
+/* Sidebar styles */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  /* height: calc(100vh - 80px);  */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--color-accent-2);
+  transition: width 0.6s ease;
+  overflow-x: hidden;
+  z-index: 1000; 
+}
+
+.sidebar.collapsed {
+  width: 0px;
+  opacity: .1;
+}
+
+/* Hide text in collapsed sidebar */
+.sidebar.collapsed .nav-link span {
+  display: none;
+}
+
+/* Sidebar links */
+.sidebar .nav-link {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+/* Title visibility */
+.sidebar_title {
+  padding: 20px;
+}
+
+.sidebar.collapsed .sidebar_title {
+  display: none;
+}
+
+.sidebar.collapsed .nav-link {
+  text-align: center;
+  justify-content: center;
+}
+
+/* MAIN CONTENT STYLES */
+.main-content {
+  /* margin-left: 250px; */
+  transition: margin-left 0.3s ease;
+  padding: 20px;
+}
+
+
+
+.close_btn{
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  /* font-size: 24px; */
+  font-weight: 600;
+  color: black;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  box-shadow: none !important;
+}

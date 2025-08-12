@@ -1,0 +1,75 @@
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.cart-summary {
+  text-align: right;
+}
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-summary {
+  text-align: right;
+}
+
+/* Sticky summary card */
+.sticky-summary {
+  position: sticky;
+  top: 80px;
+}
+
+/* Loader placeholder for infinite scroll */
+.cart-loader {
+  height: 40px;
+}
+
+/* Make cart responsive */
+@media (max-width: 768px) {
+  .sticky-summary {
+    position: relative;
+    top: 0;
+    margin-top: 20px;
+  }
+}
+
+
+
+.empty-cart-container {
+  text-align: center;
+  padding: 40px 20px;
+  color: #555;
+}
+
+.empty-cart-image {
+  width: 150px;
+  opacity: 0.6;
+  margin-bottom: 20px;
+}
+
+.empty-cart-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.order-button {
+  padding: 10px 25px;
+  background-color: #007bff;   /* Bootstrap blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.order-button:hover {
+  background-color: #0056b3;
+}

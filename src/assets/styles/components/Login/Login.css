@@ -1,0 +1,116 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* background: #f5f7fa; */
+  background: url('../../../media/image/background_pattern.png');
+}
+
+.login-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.login-input {
+  margin-bottom: 1rem;
+}
+
+.login-input label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.login-input input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.login-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.login-checkbox label {
+  margin-left: 0.5rem;
+}
+
+.login-btn {
+  width: 100%;
+  background: black;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.login-btn:hover{
+    background-color: #333;
+}
+
+.forgot-password-link {
+  text-align: right;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.forgot-password-link a {
+  color: #007bff; /* Blue or your brand's accent color */
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password-link a:hover {
+  color: #0056b3; /* Darker shade for hover */
+  text-decoration: underline;
+}
+
+
+.login-or {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 14px;
+  color: #888;
+}
+
+.error-message {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+
+.login-home-link {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.home-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.home-link:hover {
+  color: #0056b3;
+  text-decoration: none;
+}

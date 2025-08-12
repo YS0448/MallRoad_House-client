@@ -1,0 +1,18 @@
+import apiCall from './apiCall';
+
+export const me = async () => {
+  try {
+        // localStorage.removeItem("authToken")
+
+    const response = await apiCall('GET', '/auth/me');
+    return response.data;
+
+} catch (error) {
+    console.error('Failed to fetch user:', error);
+    if(error.status === 401 || error.status === 403) {
+        localStorage.removeItem("user-cred")
+        
+    }
+    return null;
+  }
+};

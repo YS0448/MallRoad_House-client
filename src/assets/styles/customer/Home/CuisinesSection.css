@@ -1,0 +1,80 @@
+.cuisines-heading {
+  color: #d96c3b;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+.cuisines-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 60%;
+  height: 4px;
+  background-color: #d4b06a; 
+  border-radius: 2px;
+  /* margin: 0 auto; */
+  right: 0;
+}
+
+
+
+.cuisine-card {
+  padding: 15px;
+  background-color: var(--color-secondary-bg);
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.1) 0px 7px 15px 0px;
+  text-align: center;
+}
+
+.cuisine-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Optional: container styling */
+.cuisines-section {
+      padding: 0px 48px 100px 48px;
+  background: url('../../../media/image/background_pattern.png');
+}
+
+.cuisine-desc {
+  font-size: 14px;
+  color: var(--color-text, #2f2f2f);
+  margin-top: 5px;
+}
+
+.view-cuisines-btn {
+  background-color: var(--color-accent); /* Terracotta */
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 10px;
+}
+
+.view-cuisines-btn:hover {
+  background-color: #c55c2e; /* Slightly darker terracotta */
+  transform: translateY(-2px);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #d96c3b; /* Terracotta or any color you want */
+  font-size: 20px; /* optional, to enlarge */
+}
+
+/* Optional: On hover */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: #c55c2e; /* Darker terracotta on hover */
+}
