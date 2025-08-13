@@ -1,5 +1,6 @@
 .home-container {
-  background-color: #f8f9fa;
+  background: url('../../../media/image/background_pattern.png');
+  padding: 0px 0px 100px 0px;
 }
 
 
@@ -41,7 +42,7 @@
 }
 
 .hero-buttons button {
-  min-width: 150px;
+  min-width: 170px;
   margin-top: 1rem;
 }
 

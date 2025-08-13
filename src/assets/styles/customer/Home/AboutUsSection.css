@@ -7,7 +7,7 @@
 
 
 .aboutUsSection{
-    padding: 70px 0px 70px 0px;
+    padding: 0px 50px 100px 50px;
     background: url('../../../media//image/background_pattern.png');
 }
 
@@ -27,7 +27,7 @@
     position: absolute;
     width: 50%;
     bottom: -8%;
-    left: -10%;
+    left: -6%;
     z-index: 10;
     border-radius: 10px;
     
@@ -58,7 +58,6 @@
   
   color: var(--color-accent);
   font-weight: 600;
-  margin-bottom: 20px;
   font-family: 'Roboto', sans-serif;
   /* font-family: 'Forum', serif; */
   position: relative;
@@ -80,7 +79,17 @@
 
 
 .aboutUsSubHeading{
-    font-size: 98px;
+    font-size: 90px !important;
     font-family: 'Forum', serif;    
 }
 
+
+@media (max-width: 768px) {
+    .aboutUsSection {
+        padding: 0px 20px 100px 20px; /* top/bottom 70px, left/right 10px */
+    }
+    .aboutUsSubHeading{
+    font-size: 60px !important;
+    }
+
+}

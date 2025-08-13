@@ -7,19 +7,19 @@ import juice_img from '../../../assets/media/image/juice_img1.png';
 const AboutUsSection = () => {
     return (
         <div className="aboutUsSection ">
-            <div className="row m-0 p-5 ">
+            <div className="row m-0 ">
                 <div className="col-md-7 pe-md-5 mb-sm-3 ">
-                    <h2 className='aboutUsHeading'>About Us</h2>
-                    <h1 className='aboutUsSubHeading'>
+                    <h2 className='aboutUsHeading my-5'>About Us</h2>
+                    <h4 className='aboutUsSubHeading'>
                         Zesty Gourmet Restaurant
-                    </h1>
+                    </h4>
                     <p className='aboutUsDescription'>
                         Welcome to our restaurant! We are dedicated to providing you with the best dining experience.
                         Our chefs use only the freshest ingredients to create delicious meals that will leave you wanting more.
                         Join us for a meal and experience the warmth of our hospitality.
                     </p>
                     
-                      <Link to="/about_us" className="moreAboutUsBtn">MORE ABOUT US</Link>
+                      <Link to="/about_us" className="moreAboutUsBtn mb-2 mb-md-0">MORE ABOUT US</Link>
                 </div>
 
                 <div className="col-md-5 aboutUs_images">

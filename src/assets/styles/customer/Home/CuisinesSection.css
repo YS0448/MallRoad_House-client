@@ -38,7 +38,7 @@
 
 /* Optional: container styling */
 .cuisines-section {
-      padding: 0px 48px 100px 48px;
+  padding: 0px 50px 100px 50px;
   background: url('../../../media/image/background_pattern.png');
 }
 
@@ -77,4 +77,12 @@
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
   color: #c55c2e; /* Darker terracotta on hover */
+}
+
+
+@media (max-width: 768px) {
+  .cuisines-section {
+    padding: 0px 20px 100px 20px;
+  }
+
 }

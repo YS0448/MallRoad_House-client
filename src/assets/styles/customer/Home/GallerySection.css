@@ -93,3 +93,10 @@
   font-size: 14px;
   margin-top: 5px;
 }
+
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 0px 20px 100px 20px;
+  }
+}
