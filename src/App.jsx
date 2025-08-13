@@ -20,8 +20,6 @@ import Loader from "./pages/common/Loader";
 import Home from "./pages/customer/Home/index";
 import Login from "./pages/components/Login/index";
 import Signup from "./pages/components/Signup/index";
-import Header from "./pages/common/Header/Header";
-import Footer from "./pages/common/Footer";
 import Reservation from "./pages/customer/Reservation/index";
 import ContactUs from "./pages/customer/ContactUs/index";
 import AboutUs from "./pages/customer/AboutUs/index";

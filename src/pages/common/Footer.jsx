@@ -29,7 +29,7 @@ const Footer = () => {
           {/* Contact/Social */}
           <div className="col-md-4 text-center text-md-end">
             <h5 className="mb-3">Get in Touch</h5>
-            <p><FaEnvelope className="me-2" /> support@mywebsite.com</p>
+            <p><FaEnvelope className="me-2" /> info@mallroadhouse.co.uk</p>
             <div className="d-flex justify-content-center justify-content-md-end gap-3">
               <a href="#" className="text-white fs-5"><FaFacebookF /></a>
               <a href="#" className="text-white fs-5"><FaInstagram /></a>
