@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "../../../../assets/styles/components/common/Sidebar.css";
 import "../../../assets/styles/components/common/Sidebar.css";
 import { useAuth } from "../../../context/AuthContext";
-import { FaTachometerAlt, FaUsers, FaCog } from "react-icons/fa";
-import { AiFillProduct } from "react-icons/ai";
-import { AiOutlineProduct } from "react-icons/ai";
+import { FaTachometerAlt, FaUsers, FaImages } from "react-icons/fa";
+import { AiFillProduct, AiOutlineProduct } from "react-icons/ai";
+import LogoutModal from "../LogoutModal";
 
-// Sidebar.jsx
 const Sidebar = ({ collapsed, toggleSidebar }) => {
-  const { user, setUser, role, setRole } = useAuth();
+  const { setUser, setRole } = useAuth();
   const navigate = useNavigate();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  const handleLogout = () => {
+  const confirmLogout = () => {
     localStorage.clear();
     setUser(null);
     setRole("guest");
@@ -21,86 +20,97 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
   };
 
   return (
-    <div className={`sidebar text-white ${collapsed ? "collapsed" : ""} `}>
-      <button className="btn-close close_btn" onClick={toggleSidebar}></button>
-      <h4 className=" sidebar_title">{"Admin Panel"}</h4>
-      <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item">
-          <Link
-            to="/admin/dashboard"
-            className="nav-link text-white d-flex align-items-center gap-2"
-          >
-            <FaTachometerAlt />
-            {"Dashboard"}
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link
-            to="/admin/ManageUsers"
-            className="nav-link text-white d-flex align-items-center gap-2"
-          >
-            <FaUsers />
-            {"Users"}
-          </Link>
-        </li>
-        
+    <>
+      {/* Sidebar */}
+      <div className={`sidebar text-white ${collapsed ? "collapsed" : ""} `}>
+        <button className="btn-close close_btn" onClick={toggleSidebar}></button>
+        <h4 className="sidebar_title">{"Admin Panel"}</h4>
+        <ul className="nav nav-pills flex-column mb-auto">
+          <li className="nav-item">
+            <Link to="/admin/dashboard" className="nav-link text-white d-flex align-items-center gap-2">
+              <FaTachometerAlt />
+              {"Dashboard"}
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/admin/ManageUsers" className="nav-link text-white d-flex align-items-center gap-2">
+              <FaUsers />
+              {"Users"}
+            </Link>
+          </li>
 
-        {/* <li className="nav-item">
-          <Link
-            to="/admin/takeaway"
-            className="nav-link text-white d-flex align-items-center gap-2"
-          >
-            <AiFillProduct />
-            {"Add Takeaway Items"}
-          </Link>
-        </li> */}
+          <li className="nav-item dropdown">
+            <Link
+              to="#"
+              className="nav-link dropdown-toggle text-white d-flex align-items-center gap-2"
+              id="galleryDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <FaImages />
+              {"Gallery"}
+            </Link>
+            <ul className="dropdown-menu ms-3" aria-labelledby="galleryDropdown">
+              <li>
+                <Link to="/admin/Gallery/add" className="dropdown-item">
+                  Add Gallery Item
+                </Link>
+              </li>
+            </ul>
+          </li>
 
-        <li className="nav-item dropdown">
-          <Link
-            to="#"
-            className="nav-link dropdown-toggle text-white d-flex align-items-center gap-2"
-            id="takeawayDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <AiFillProduct />
-            {"Menu"}
-          </Link>
+          <li className="nav-item dropdown">
+            <Link
+              to="#"
+              className="nav-link dropdown-toggle text-white d-flex align-items-center gap-2"
+              id="menuDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <AiFillProduct />
+              {"Menu"}
+            </Link>
+            <ul className="dropdown-menu ms-3" aria-labelledby="menuDropdown">
+              <li>
+                <Link to="/admin/takeaway/add" className="dropdown-item">
+                  Add Takeaway Item
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin/dining/add" className="dropdown-item">
+                  Add Dining Item
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin/drinks/add" className="dropdown-item">
+                  Add Drinks Item
+                </Link>
+              </li>
+            </ul>
+          </li>
 
-          <ul className="dropdown-menu" aria-labelledby="takeawayDropdown">
-            <li>
-              <Link to="/admin/takeaway/add" className="dropdown-item">
-                Add Takeaway Item
-              </Link>
-            </li>
-            <li>
-              <Link to="/admin/dining/add" className="dropdown-item">
-                Add Dining Item
-              </Link>
-            </li>
-            <li>
-              <Link to="/admin/drinks/add" className="dropdown-item">
-                Add Drinks Item
-              </Link>
-            </li>
-          </ul>
-        </li>
+          <li>
+            <div
+              className="nav-link"
+              onClick={() => setShowLogoutModal(true)}
+              style={{ cursor: "pointer" }}
+            >
+              <AiOutlineProduct />
+              {"Logout"}
+            </div>
+          </li>
+        </ul>
+      </div>
 
-
-
-        <li>
-          <div
-            className="nav-link"
-            onClick={handleLogout}
-            style={{ cursor: "pointer" }}
-          >
-            <AiOutlineProduct />
-            {"Logout"}
-          </div>
-        </li>
-      </ul>
-    </div>
+      {/* Logout Modal Component */}
+      <LogoutModal
+        show={showLogoutModal}
+        onCancel={() => setShowLogoutModal(false)}
+        onConfirm={confirmLogout}
+      />
+    </>
   );
 };
 

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import apiCall from "../../../api/apiCall";
 import '../../../assets/styles/admin/dashboard/AdminDashboard.css';
+import Loader from '../../common/Loader';
+
 
 const AdminDashboard = () => {
   const [dashboardStats, setDashboardStats] = useState(null);
@@ -25,11 +27,10 @@ const AdminDashboard = () => {
     fetchDashboardData();
   }, []);
 
-  if (loading) {
-    return <div className="p-4">Loading dashboard...</div>;
-  }
 
   return (
+    <>
+    { loading ? <Loader />: null }
     <div className="container-fluid p-4 bg-light min-vh-100">
       {/* Page Header */}
       <div className="d-flex justify-content-between align-items-center mb-4">
@@ -117,6 +118,7 @@ const AdminDashboard = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
