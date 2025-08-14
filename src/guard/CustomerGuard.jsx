@@ -1,15 +1,16 @@
 // src/components/AuthGuard.js
 import React from 'react';
-import { Navigate } from 'react-router-dom';
-
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 const CustomerGuard = ({ children }) => {
-  const user = JSON.parse(localStorage.getItem('user-cred'));
-  const role = user?.user?.role;
+
+  const { role } = useAuth();
   if (role !== 'customer' ) {
-    return <Navigate to="/login" replace />;
+    const landingPage = role === 'admin'? '/admin/dashboard' : '/';
+    return <Navigate to={landingPage} replace />;
   }
 
-  return children;
+  return <Outlet />;
 };
 
 export default CustomerGuard;

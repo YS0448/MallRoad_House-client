@@ -1,0 +1,24 @@
+/* Avatar image */
+.user-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* border: 2px solid #fff;  */
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect */
+.user-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+/* Dropdown toggle spacing */
+.user-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

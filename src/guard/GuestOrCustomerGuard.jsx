@@ -2,15 +2,15 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-const AdminGuard = ({ children }) => {
-
-  const { role } = useAuth();  
-  if (role!== 'admin') {
+const GuestOrCustomerGuard = ({ children }) => {
+    const { role } = useAuth();
+  if (role !== 'guest' && role !== 'customer') {
     const landingPage = role === 'admin'? '/admin/dashboard' : '/';
     return <Navigate to={landingPage} replace />;
   }
 
-  return <Outlet />;
+  // return children;
+  return <Outlet/>;
 };
 
-export default AdminGuard;
+export default GuestOrCustomerGuard;

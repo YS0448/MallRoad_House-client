@@ -1,8 +1,9 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
-import LogoutModal from "../../common/LogoutModal"; // same modal component from Sidebar
-
+import LogoutModal from "../../common/LogoutModal"; 
+import user_avtar from "../../../assets/media/image/user_avatar3.gif"; 
+import '../../../assets/styles/components/common/UserMenu.css';
 const UserMenu = ({ setUser, setRole, role }) => {
   const navigate = useNavigate();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -19,14 +20,16 @@ const UserMenu = ({ setUser, setRole, role }) => {
       {(role === "admin" || role === "customer") && (
         <li className="nav-item dropdown">
           <span
-            className="nav-link dropdown-toggle d-flex align-items-center"
+            className="nav-link dropdown-toggle d-flex align-items-center p-0"
             id="userDropdown"
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
             style={{ cursor: "pointer" }}
           >
-            <FaUserCircle className="user_icon me-1" />
+            {/* <FaUserCircle className="user_icon me-1" /> */}
+
+            <img src={user_avtar} alt="" className="user-avatar"/>
           </span>
           <ul
             className="dropdown-menu dropdown-menu-end"
