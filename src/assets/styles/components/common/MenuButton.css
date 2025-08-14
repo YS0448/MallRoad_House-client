@@ -1,0 +1,71 @@
+.menu-float-wrapper {
+  position: fixed;
+  bottom: 90px; /* above WhatsApp button */
+  right: 20px;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Floating menu button */
+.menu-float-btn {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease;
+}
+
+.menu-float-btn:hover {
+  transform: scale(1.1);
+  background-color: #e68900;
+}
+
+/* Dropdown menu container */
+.menu-dropdown {
+  position: absolute;
+  bottom: 65px;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  overflow: hidden;
+  animation: slideUp 0.25s ease-out;
+}
+
+/* Animation for dropdown */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dropdown items */
+.menu-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 160px;
+  padding: 12px 16px;
+  background: white;
+  border: none;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.2s, color 0.2s;
+}
+
+.menu-dropdown-item:hover {
+  background-color: #fff3e0;
+  color: #e68900;
+}
