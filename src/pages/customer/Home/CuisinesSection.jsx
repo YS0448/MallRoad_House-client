@@ -81,7 +81,7 @@ const CuisinesSection = () => {
           <button className="view-cuisines-btn">View All Cuisines</button>
         </div> */}
         <div className="text-center mt-5">
-            <Link to="/cuisines" className="view-cuisines-btn">View All Cuisines</Link>
+            <Link to="/menu" className="view-cuisines-btn">View All Cuisines</Link>
         </div>
     </div>
   );
