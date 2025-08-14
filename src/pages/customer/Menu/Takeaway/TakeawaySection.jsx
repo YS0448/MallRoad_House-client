@@ -108,7 +108,7 @@ const TakeawaySection = ({ activeTab }) => {
 
       </div>
       
-      {Object.keys(menuData).length === 0 && !loading && <p>No items found.</p>}
+      {Object.keys(menuData).length === 0 && !loading && <p className="text-center">No items found.</p>}
 
       {Object.keys(menuData).map((category, idx, arr) => (
         <div key={category} ref={idx === arr.length - 1 ? lastElementRef : null}>
@@ -117,7 +117,7 @@ const TakeawaySection = ({ activeTab }) => {
       ))}
 
       {loading && <p className="text-center my-3">Loading more items...</p>}
-      {!hasMore && <p className="text-center my-3">No more items.</p>}
+      {!hasMore && Object.keys(menuData).length !== 0 && <p className="text-center my-3">No more items.</p>}
     </div>
   );
 };
