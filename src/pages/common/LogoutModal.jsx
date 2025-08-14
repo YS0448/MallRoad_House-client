@@ -1,11 +1,11 @@
 // src/components/common/LogoutModal.jsx
 import React from "react";
-
+import '../../assets/styles/components/common/LogoutModal.css';
 const LogoutModal = ({ show, onCancel, onConfirm }) => {
   if (!show) return null; // Don't render if not visible
 
   return (
-    <div className="modal fade show" style={{ display: "block" }}>
+    <div className="modal fade show logout_modal_container">
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
