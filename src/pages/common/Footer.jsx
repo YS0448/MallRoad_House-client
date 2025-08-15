@@ -25,7 +25,7 @@ const Footer = () => {
               <li><a href="/" className="text-decoration-none">Home</a></li>
               <li><a href="/about_us" className="text-decoration-none">About Us</a></li>
               <li><a href="/menu" className="text-decoration-none">Menu</a></li>
-              <li><a href="/reservation" className="text-decoration-none">Reservation</a></li>
+              <li><a href="https://mallroadhouse.resos.com/booking" target='_blank' rel='noopener noreferrer' className="text-decoration-none">Reservation</a></li>
               <li><a href="/contact_us" className="text-decoration-none">Contact</a></li>
             </ul>
           </div>
