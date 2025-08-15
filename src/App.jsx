@@ -106,9 +106,9 @@ function AppLayout() {
             <Route
               path="/checkout"
               element={
-                <TimeRestrictedGuard>
+                // <TimeRestrictedGuard>
                   <Checkout />
-                </TimeRestrictedGuard>
+                // </TimeRestrictedGuard>
               }
             />
           </Route>

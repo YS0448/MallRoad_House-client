@@ -8,3 +8,7 @@
   max-height: 120px;
   object-fit: cover;
 }
+
+.order-item{
+  width: 100%;
+}

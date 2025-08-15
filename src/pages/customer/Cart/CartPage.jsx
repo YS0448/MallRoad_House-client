@@ -4,7 +4,7 @@ import CartItem from "./CartItem.jsx";
 import apiCall from "../../../api/apiCall";
 import "../../../assets/styles/customer/Cart/Cart.css";
 import empty_cart from '../../../assets/media/image/empty_cart.jpg';
-
+import { Toast, showToast} from '../../common/AlertService.jsx'
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
@@ -89,11 +89,18 @@ const CartPage = () => {
 
 const handleCheckout = () => {
   const checkedItems = cartItems.filter(item => item.checked);
+  console.log('checkedItems:', checkedItems);
+  if(checkedItems.length === 0) {
+    showToast('error', 'Please select at least one item to proceed to checkout.');
+    return;
+  }
   navigate('/checkout', { state: { items: checkedItems } });
 };
 
 
   return (
+    <>
+    <Toast/>
     <div className="cart-page container my-4">
       <h2 className="mb-4 text-primary">
         🛒 Your Cart ({totalCount} products)
@@ -155,6 +162,7 @@ const handleCheckout = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

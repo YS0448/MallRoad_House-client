@@ -19,7 +19,7 @@ const OrderDetails = ({
       ) : (
         <>
           {/* Scrollable List */}
-          <div className="order-list">
+          <div className="order-list ps-3 ">
             {items.map((item, index) => {
               const price = Number(item.price) || 0;
               const qty = Number(item.number_of_items) || 0;
@@ -27,7 +27,7 @@ const OrderDetails = ({
 
               return (
                 <div
-                  className="row align-items-center border rounded p-3 mb-3 shadow-sm bg-white"
+                  className="row align-items-center border rounded p-3 mb-3 shadow-sm bg-white order-item"
                   key={item.cart_id || index}
                 >
                   {/* Image */}
@@ -40,7 +40,7 @@ const OrderDetails = ({
                   </div>
 
                   {/* Details */}
-                  <div className="col-md-6 col-12">
+                  <div className="col-md-9 col-12">
                     <h5 className="mb-1">{item.item_name}</h5>
                     <div className="text-muted">Price: ₹{price.toFixed(2)}</div>
 
@@ -69,7 +69,7 @@ const OrderDetails = ({
               );
             })}
           </div>
-
+            <hr />
           {/* Grand Total */}
           <div className="row mt-3">
             <div className="col text-end fw-bold fs-5">
