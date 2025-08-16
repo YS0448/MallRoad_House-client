@@ -20,12 +20,12 @@ const CartPage = () => {
   // 🔹 Whenever cartItems change, recalc totals for checked items
   useEffect(() => {
     const itemsCount = cartItems.reduce(
-      (count, item) => (item.checked ? count + item.number_of_items : count),
+      (count, item) => (item.checked ? count + item.quantity : count),
       0
     );
 
     const amount = cartItems.reduce(
-      (sum, item) => (item.checked ? sum + item.price * item.number_of_items : sum),
+      (sum, item) => (item.checked ? sum + item.price * item.quantity : sum),
       0
     );
 
@@ -62,12 +62,12 @@ const CartPage = () => {
 
   const handleQuantityChange = async (cart_id, delta) => {
     const item = cartItems.find((item) => item.cart_id === cart_id);
-    const newQuantity = item.number_of_items + delta;
+    const newQuantity = item.quantity + delta;
     if (newQuantity <= 0) return;
 
     try {
       await apiCall("PUT", `/api/cart/${cart_id}`, {
-        number_of_items: newQuantity,
+        quantity: newQuantity,
       });
       fetchCartItems();
     } catch (err) {

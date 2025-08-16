@@ -56,7 +56,7 @@ const CartItem = ({ item, onQuantityChange, onRemove, onCheckboxChange }) => {
             >
               -
             </button>
-            <span>{item.number_of_items}</span>
+            <span>{item.quantity}</span>
             <button
               className="btn btn-sm btn-outline-secondary"
               onClick={() => onQuantityChange(item.cart_id, 1)}
@@ -70,7 +70,7 @@ const CartItem = ({ item, onQuantityChange, onRemove, onCheckboxChange }) => {
       {/* Total and Remove Button */}
       <div className="col-12 col-md-5 d-flex flex-column align-items-end">
         <p className="mb-2">
-          <strong>Total:</strong> ₹{(item.price * item.number_of_items).toFixed(2)}
+          <strong>Total:</strong> ₹{(item.price * item.quantity).toFixed(2)}
         </p>
         <button
           className="btn btn-sm btn-danger"

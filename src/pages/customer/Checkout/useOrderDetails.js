@@ -20,7 +20,7 @@ export default function useOrderDetails(initialItems = []) {
       const response = await apiCall("GET", "/api/cart");
       const fetchedItems = response.data.items.map(item => ({
         ...item,
-        number_of_items: Number(item.number_of_items),
+        quantity: Number(item.quantity),
       })) || [];
       setItems(fetchedItems);
     } catch (error) {
@@ -32,20 +32,20 @@ export default function useOrderDetails(initialItems = []) {
 
   const increaseQty = (index) => {
     const updated = [...items];
-    updated[index].number_of_items += 1;
+    updated[index].quantity += 1;
     setItems(updated);
   };
 
   const decreaseQty = (index) => {
     const updated = [...items];
-    if (updated[index].number_of_items > 1) {
-      updated[index].number_of_items -= 1;
+    if (updated[index].quantity > 1) {
+      updated[index].quantity -= 1;
       setItems(updated);
     }
   };
 
   const grandTotal = items.reduce(
-    (sum, item) => sum + Number(item.price) * Number(item.number_of_items),
+    (sum, item) => sum + Number(item.price) * Number(item.quantity),
     0
   );
 

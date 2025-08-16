@@ -5,12 +5,12 @@ import CustomHeroSection from "../../components/layout/CustomHeroSection";
 import no_data_img from '../../../assets/media/image/no_data.jpg';
 
 const OrderItemRow = ({ item }) => {
-  const { order_item_id, item_name, number_of_items, per_item_price, total_price } = item;
+  const { order_item_id, item_name, quantity, per_item_price, total_price } = item;
 
   return (
     <tr key={order_item_id}>
       <td>{item_name || "Item"}</td>
-      <td>{number_of_items}</td>
+      <td>{quantity}</td>
       <td>₹{per_item_price.toFixed(2)}</td>
       <td>₹{total_price.toFixed(2)}</td>
     </tr>

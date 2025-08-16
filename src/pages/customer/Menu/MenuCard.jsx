@@ -26,13 +26,13 @@ const MenuCard = ({ item, activeTab }) => {
     try {
       const payload = {
         item_id: item.item_id,      // ensure item_id exists in item object
-        number_of_items: 1          // default to 1; you can customize
+        quantity: 1          // default to 1; you can customize
       };
       const res = await apiCall("POST", "api/cart", payload);
       showToast("success","Item added to cart!" );
       setLocalItem(prev => 
         ({...prev, 
-          number_of_items: 1,
+          quantity: 1,
           cart_id: res.data.cart_id       
         })
       );
@@ -46,15 +46,15 @@ const MenuCard = ({ item, activeTab }) => {
 const handleQuantityChange = async (cart_id, delta) => {
 
     // const item = item.find(item => item.cart_id === cart_id);
-    const newQuantity = item.number_of_items + delta;
+    const newQuantity = item.quantity + delta;
     // if (newQuantity <= 0) return;
 
     try {
-      await apiCall("PUT", `/api/cart/${cart_id}`, { number_of_items: newQuantity });
+      await apiCall("PUT", `/api/cart/${cart_id}`, { quantity: newQuantity });
       // fetchCartItems();
       setLocalItem(prev => 
         ({...prev, 
-          number_of_items: newQuantity       
+          quantity: newQuantity       
         })
       );
 
@@ -140,7 +140,7 @@ const handleQuantityChange = async (cart_id, delta) => {
           {(localItem.status === "available" && activeTab==="takeaway" )&& (
             <div className="mt-3 d-flex gap-2">
 
-            {localItem.number_of_items !== null && localItem.number_of_items > 0 ? (
+            {localItem.quantity !== null && localItem.quantity > 0 ? (
                 <>
                    <div className="quantity-controls d-flex align-items-center gap-2 px-2">
                      <button
@@ -149,7 +149,7 @@ const handleQuantityChange = async (cart_id, delta) => {
                      >
                        -
                      </button>
-                     <span>{localItem.number_of_items}</span>
+                     <span>{localItem.quantity}</span>
                      <button
                        className="btn btn-sm btn-outline-secondary"
                        onClick={() => handleQuantityChange(localItem.cart_id, 1)}

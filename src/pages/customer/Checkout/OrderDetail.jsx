@@ -22,7 +22,7 @@ const OrderDetails = ({
           <div className="order-list ps-3 ">
             {items.map((item, index) => {
               const price = Number(item.price) || 0;
-              const qty = Number(item.number_of_items) || 0;
+              const qty = Number(item.quantity) || 0;
               const subtotal = price * qty;
 
               return (
