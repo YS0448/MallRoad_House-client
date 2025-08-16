@@ -20,7 +20,7 @@ const DrinksImageSection = ({ handleChange, previewImage, openModal }) => {
 
   return (
     <div className="card shadow p-3">
-      <h5 className="section-title text-center">Food Image</h5>
+      <h5 className="section-title text-center">Drink Image</h5>
 
       <div className="upload-wrapper mb-3">
         <input

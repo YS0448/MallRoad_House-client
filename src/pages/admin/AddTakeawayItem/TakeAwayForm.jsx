@@ -16,7 +16,8 @@ const TakeAwayForm = () => {
     selectedAllergens,        // Renamed
     setSelectedAllergens,     // Renamed
     openModal,
-    modalRef
+    modalRef,
+    categoryOptions
   } = useTakeAwayForm();
 
   return (
@@ -30,6 +31,7 @@ const TakeAwayForm = () => {
               handleChange={handleChange}
               selectedAllergens={selectedAllergens}         // Renamed
               setSelectedAllergens={setSelectedAllergens}   // Renamed
+              categoryOptions = {categoryOptions}
             />
           </div>
 

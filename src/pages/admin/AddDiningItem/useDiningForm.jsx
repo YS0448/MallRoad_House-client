@@ -22,7 +22,7 @@ const useTakeAwayForm = () => {
 useEffect(() => {
   const fetchCategories = async () => {
     try {
-      const res = await apiCall("GET", "/admin/getTakeawayCatogories");
+      const res = await apiCall("GET", "/admin/getDiningCatogories");
       if (res?.data?.categories) {
         setCategoryOptions(res.data.categories); // Make sure this is an array
       }

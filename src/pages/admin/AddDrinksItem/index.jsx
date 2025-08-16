@@ -1,7 +1,7 @@
 import React from 'react';
 import DrinksForm from './DrinksForm';
 import {Toast} from '../../common/AlertService';
-const TakeAway=()=>{
+const Drinks=()=>{
     return(
         <>
             <DrinksForm />
@@ -10,4 +10,4 @@ const TakeAway=()=>{
     )
 }
 
-export default TakeAway;
+export default Drinks;

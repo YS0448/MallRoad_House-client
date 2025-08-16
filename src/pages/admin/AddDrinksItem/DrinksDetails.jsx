@@ -17,6 +17,7 @@ const DrinksDetails = ({
           className="form-control"
           value={formData.category}
           onChange={handleChange}
+          autoComplete="off"
           placeholder="e.g. Fast Food"
         />
         <datalist id="category-options">
@@ -34,7 +35,7 @@ const DrinksDetails = ({
           className="form-control"
           value={formData.drinks_name}
           onChange={handleChange}
-          placeholder="e.g. Veg Burger"
+          placeholder="e.g. Smironoff Vodka"
         />
       </div>
 

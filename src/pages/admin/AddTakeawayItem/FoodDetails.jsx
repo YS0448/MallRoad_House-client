@@ -20,6 +20,7 @@ const FoodDetails = ({
     className="form-control"
     value={formData.category}
     onChange={handleChange}
+    autoComplete="off"
     placeholder="e.g. Fast Food"
   />
   <datalist id="category-options">

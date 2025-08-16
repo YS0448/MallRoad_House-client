@@ -16,7 +16,8 @@ const DiningForm = () => {
     selectedAllergens,        // Renamed
     setSelectedAllergens,     // Renamed
     openModal,
-    modalRef
+    modalRef,
+    categoryOptions
   } = useDiningForm();
 
   return (
@@ -30,6 +31,7 @@ const DiningForm = () => {
               handleChange={handleChange}
               selectedAllergens={selectedAllergens}         // Renamed
               setSelectedAllergens={setSelectedAllergens}   // Renamed
+              categoryOptions={categoryOptions}
             />
           </div>
 

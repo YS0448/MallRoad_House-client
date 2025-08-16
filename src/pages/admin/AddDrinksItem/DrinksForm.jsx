@@ -3,10 +3,10 @@ import DrinksDetails from "./DrinksDetails";
 import FormActions from "./FormActions";
 import ImageModal from "./ImageModal";
 import DrinkImageSection from "./DrinksImageSection";
-import useTakeAwayForm from "./useDrinksForm";
+import useDrinksForm from "./useDrinksForm";
 import "../../../assets/styles/admin/TakeAway/TakeAwayForm.css";
 
-const TakeAwayForm = () => {
+const DrinksForm = () => {
   const {
     formData,
     handleChange,
@@ -14,8 +14,9 @@ const TakeAwayForm = () => {
     handleSubmit,
     previewImage,
     openModal,
-    modalRef
-  } = useTakeAwayForm();
+    modalRef,
+    categoryOptions
+  } = useDrinksForm();
 
   return (
     <div className="takeaway-form container ">
@@ -26,6 +27,7 @@ const TakeAwayForm = () => {
             <DrinksDetails
               formData={formData}
               handleChange={handleChange}
+              categoryOptions={categoryOptions}
             />
           </div>
 
@@ -46,4 +48,4 @@ const TakeAwayForm = () => {
   );
 };
 
-export default TakeAwayForm;
+export default DrinksForm;
