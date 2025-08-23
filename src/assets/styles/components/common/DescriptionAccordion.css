@@ -1,0 +1,23 @@
+.desc_accordion_container .desc_accordion_btn{
+    font-size: 16px;
+    background-color: #f8f9fa;
+}
+
+.desc_accordion_container .desc_accordion_item_head{
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    background-color: #C1E1C1;
+}
+
+.desc_accordion_container .accordion-body ul li{
+    font-size: 14px;
+}
+.desc_accordion_container .accordion-body ul li span{
+    font-size: 13px;
+    color: white;
+    font-weight: bolder;
+    background-color: #228B22		;
+    border-radius: 8px;
+    padding: 2px 6px;
+}

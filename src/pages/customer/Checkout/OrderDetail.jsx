@@ -1,4 +1,8 @@
 import "../../../assets/styles/customer/Checkout/OrderDetail.css";
+import DescriptionAccordion from "../../../pages/common/DescriptionAccordion";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { RxCross1 } from "react-icons/rx";
+
 
 const OrderDetails = ({
   items,
@@ -6,12 +10,13 @@ const OrderDetails = ({
   decreaseQty,
   paymentMethod,
   grandTotal,
+  handleRemoveItem
 }) => {
   console.log('items:', items);
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
   return (
-    <div className="container my-4">
+    <div className="container my-4 order_details_container">
       <h3 className="mb-4">Your Order</h3>
 
       {items.length === 0 ? (
@@ -40,9 +45,11 @@ const OrderDetails = ({
                   </div>
 
                   {/* Details */}
-                  <div className="col-md-9 col-12">
+                  <div className="col-md-9 col-12 order_detail_box">
+                    {/* Remove Item */}
+                    <RiDeleteBin6Line className="delete_icon" onClick={()=> handleRemoveItem(item)}/>         
                     <h5 className="mb-1">{item.item_name}</h5>
-                    <div className="text-muted">Price: ₹{price.toFixed(2)}</div>
+                    <div className="text-muted">Price: £{price.toFixed(2)}</div>
 
                     {/* Quantity with + - */}
                     <div className="d-flex align-items-center mt-2">
@@ -61,9 +68,10 @@ const OrderDetails = ({
                       </button>
                     </div>
 
-                    <div className="fw-bold mt-2">Subtotal: ₹{subtotal.toFixed(2)}</div>
+                    <div className="fw-bold mt-2">Subtotal: £{subtotal.toFixed(2)}</div>
+                    
                   </div>
-
+                  <DescriptionAccordion description={item.description} />  
                   {/* Removed the "Remove" button section */}
                 </div>
               );
@@ -73,7 +81,7 @@ const OrderDetails = ({
           {/* Grand Total */}
           <div className="row mt-3">
             <div className="col text-end fw-bold fs-5">
-              Grand Total: ₹{grandTotal.toFixed(2)}
+              Grand Total: £{grandTotal.toFixed(2)}
             </div>
           </div>
 

@@ -1,0 +1,69 @@
+.set-meal-row {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: var(--color-secondary-bg);
+  border-radius: 15px;
+  transition: 0.3s ease;
+}
+
+.set-meal-row:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.set-meal-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.set-meal-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.qty-text {
+  font-size: 1.2rem;
+  color: var(--color-accent);
+  margin: 0 10px;
+}
+
+/* .btn {
+  border-radius: 8px;
+  font-weight: 500;
+} */
+
+/* #ffc107 */
+/* #28a745 */
+.setmeal_order_btn, 
+.setmeal_addcart_btn{
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.setmeal_addcart_btn{
+  background-color:#ffc107 ;
+  border: #ffc107;
+}
+
+.setmeal_order_btn{
+  background-color:#28a745 ;
+  border: #28a745;
+  color: white;
+}
+
+.set-meal-items-container{
+  height: 640px;
+  overflow: auto;
+}
+
+.set-meal-row .category-header{
+  color: var(--color-accent);
+}
+
+.set-meal-row .extra-charge-catogery-header{
+  color: olivedrab;
+}

@@ -54,7 +54,7 @@ const GallerySection = () => {
       image_path: gallery_image.rich_currie_fluffy_rice_bread,
       image_name: "Rich Currie with Fluffy Rice & Bread",
       description:
-        "Two flavorful Indian curries, basmati rice, and fresh naan bread served.",
+        "Two flavorful Indian curries, basmati rice, and fresh naan bread are served.",
     },
     // Add more items as needed
   ];

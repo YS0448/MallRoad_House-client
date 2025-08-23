@@ -1,0 +1,149 @@
+.meal-container {
+  margin: 30px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.meal-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.meal-container .form-group {
+  margin-bottom: 15px;
+}
+
+.meal-container label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+
+.meal-container input,
+.meal-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.meal-container input:focus,
+.meal-container select:focus {
+  border-color: #007bff;
+}
+
+.meal-container .category-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #eee;
+}
+
+.meal-container .field-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.meal-container .field-row input {
+  flex: 1;
+}
+
+.meal-container .delete_btn .delete_icon{
+    color: red;
+}
+
+.meal-container .btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.meal-container .btn-primary {
+  background: #007bff;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.meal-container .btn-success {
+  background: #28a745;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.meal-container .btn-secondary {
+  background: #6c757d;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.meal-container .btn-danger {
+  background: #dc3545;
+  color: #fff;
+}
+
+
+.meal-container .image-preview {
+  margin-top: 10px;
+}
+
+.meal-container .image-preview img {
+  max-width: 200px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Image upload styling */
+.meal-container .image-upload-box {
+  margin-top: 8px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  background: #fafafa;
+  transition: border 0.3s;
+}
+
+.meal-container .image-upload-box:hover {
+  border-color: #007bff;
+}
+
+.meal-container .upload-label {
+  display: inline-block;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+}
+
+.image-preview {
+  position: relative;
+  display: inline-block;
+}
+
+.image-preview img {
+  max-width: 220px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.remove-image {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 4px;
+}

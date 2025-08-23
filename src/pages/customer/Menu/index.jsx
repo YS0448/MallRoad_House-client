@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TakeawaySection from "./Takeaway/TakeawaySection";
 import DiningSection from "./Dining/DiningSection";
 import DrinksSection from "./Drinks/DrinksSection";
-import SetMealSection from "./SetMeals/SetMealSection";
+import SetMealSection from "./SetMeal/SetMealSection";
 import "../../../assets/styles/customer/Menu/Menu.css";
 import { Toast } from "../../../pages/common/AlertService";
 import CustomHeroSection from "../../components/layout/CustomHeroSection";
 
 const Menu = () => {
-  const [activeTab, setActiveTab] = useState("takeaway");
+  const [activeTab, setActiveTab] = useState(
+    localStorage.getItem("activeTab") || "takeaway"
+  );
+  
+  // ✅ Save to localStorage when it changes
+  useEffect(() => {
+    localStorage.setItem("activeTab", activeTab);
+  }, [activeTab]);
 
   return (
     <>
@@ -45,12 +52,20 @@ const Menu = () => {
           >
             🍹 Drinks
           </button>
+          <button
+            className={`btn ${
+              activeTab === "set_meal" ? "btn-primary" : "btn-outline-primary"
+            }`}
+            onClick={() => setActiveTab("set_meal")}
+          >
+            🍛  Set Meal
+          </button>
         </div>
 
         {activeTab === "takeaway" && <TakeawaySection activeTab={activeTab} />}
-        {activeTab === "dining" && <DiningSection />}
-        {activeTab === "drinks" && <DrinksSection />}
-        {activeTab === "set_meals" && <SetMealSection />}
+        {activeTab === "dining" && <DiningSection activeTab={activeTab} />}
+        {activeTab === "drinks" && <DrinksSection activeTab={activeTab} />}
+        {activeTab === "set_meal" && <SetMealSection activeTab={activeTab} />}
       </div>
     </>
   );

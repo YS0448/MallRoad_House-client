@@ -28,6 +28,7 @@ useEffect(() => {
       }
     } catch (error) {
       console.error("Failed to fetch categories:", error);
+      showToast("error", error.message || "Failed to fetch categories");
     }
   };
 

@@ -35,11 +35,6 @@ export const AuthProvider = ({ children }) => {
     else setLoading(false);
   }, []);
 
-  const logout = () => {
-    localStorage.removeItem('user-cred');
-    setUser(null);
-    setRole('guest');
-  };
 
   const authContextValue = useMemo(() => ({
     user,
@@ -47,8 +42,7 @@ export const AuthProvider = ({ children }) => {
     role,
     setRole,
     loading,
-    isAuthenticated: !!user,
-    logout
+    isAuthenticated: !!user    
   }), [user, role, loading]);
 
   return (

@@ -24,29 +24,29 @@
 }
 
 .menu-tabs .btn-primary {
-  background-color: #b85c38; /* Warm restaurant color */
+  background-color: var(--color-accent); /* Warm restaurant color */
   border: none;
 }
 
 .menu-tabs .btn-primary:hover {
-  background-color: #a24f30;
+  background-color: var(--color-accent);
 }
 
 .menu-tabs .btn-outline-primary {
-  border: 2px solid #b85c38;
-  color: #b85c38;
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
   background-color: transparent;
 }
 
 .menu-tabs .btn-outline-primary:hover {
-  background-color: #b85c38;
+  background-color: var(--color-accent);
   color: white;
 }
 
 .category-title {
   font-family: 'Playfair Display', serif;
   font-size: 1.6rem;
-  color: #b85c38;
+  color: var(--color-accent);
   border-bottom: 2px solid rgba(184,92,56,0.2);
   padding-bottom: 5px;
   margin-bottom: 15px;
@@ -82,7 +82,7 @@
 
 .description-toggle {
   cursor: pointer;
-  color: #b85c38;
+  color: var(--color-accent);
   font-weight: 500;
 }
 

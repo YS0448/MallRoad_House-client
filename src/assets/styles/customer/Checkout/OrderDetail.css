@@ -1,14 +1,25 @@
-.order-list {
+.order_details_container .order-list {
   max-height: 400px;
   overflow-y: auto;
   padding-right: 5px;
 }
 
-.order-img {
+.order_details_container .order-img {
   max-height: 120px;
   object-fit: cover;
 }
 
-.order-item{
+.order_details_container .order-item{
   width: 100%;
+}
+
+.order_details_container .order_detail_box {
+  position: relative;
+}
+.order_details_container .order_detail_box .delete_icon{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: red;
+  font-size: 20px;
 }

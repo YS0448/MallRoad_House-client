@@ -39,6 +39,7 @@ import AdminDashboard from "./pages/admin/Dashboard/index";
 import AddTakeawayItem from "./pages/admin/AddTakeawayItem/index";
 import AddDiningItem from "./pages/admin/AddDiningItem/index";
 import AddDrinksItem from "./pages/admin/AddDrinksItem/index";
+import AddSetMeal from "./pages/admin/AddSetMeal/index";
 import ManageTakeawayItem from "./pages/admin/ManageTakeawayItem/index";
 import ManageUsers from "./pages/admin/ManageUsers/index";
 import AddGalleryItem from "./pages/admin/AddGalleryItem/index";
@@ -118,12 +119,13 @@ function AppLayout() {
         <Route element={<AdminGuard/>}>
           <Route element={<AdminLayout />}>
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            <Route path="/admin/Takeaway/add" element={<AddTakeawayItem />} />
-            <Route path="/admin/Dining/add" element={<AddDiningItem />} />
-            <Route path="/admin/Drinks/add" element={<AddDrinksItem />} />
-            <Route path="/admin/Takeaway/manage" element={<ManageTakeawayItem />} />
-            <Route path="/admin/ManageUsers" element={<ManageUsers />} />
-            <Route path="/admin/Gallery/add" element={<AddGalleryItem />} />
+            <Route path="/admin/takeaway/add" element={<AddTakeawayItem />} />
+            <Route path="/admin/dining/add" element={<AddDiningItem />} />
+            <Route path="/admin/drinks/add" element={<AddDrinksItem />} />
+            <Route path="/admin/takeaway/manage" element={<ManageTakeawayItem />} />
+            <Route path="/admin/manageUsers" element={<ManageUsers />} />
+            <Route path="/admin/gallery/add" element={<AddGalleryItem />} />
+            <Route path="/admin/set_meal/add" element={<AddSetMeal />} />
           </Route>
         </Route>        
 

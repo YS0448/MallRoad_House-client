@@ -86,3 +86,9 @@
   padding: 6px 10px;
   border-radius: 6px;
 }
+
+.item_price{
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}

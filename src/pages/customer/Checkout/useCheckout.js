@@ -14,6 +14,7 @@ export default function useCheckout(initialItems = []) {
     decreaseQty,
     grandTotal,
     setItems,
+    handleRemoveItem
   } = useOrderDetails(initialItems);
 
   const {
@@ -44,7 +45,7 @@ export default function useCheckout(initialItems = []) {
         totalAmount: grandTotal,
     };
     
-    console.log('orderPayload:', orderPayload);
+    console.log('orderPayload:',  );
     try {
       const response = await apiCall("POST", "/api/orders", orderPayload);
       showToast('success','Order placed successfully.'+ response.data.orderId)
@@ -70,5 +71,6 @@ export default function useCheckout(initialItems = []) {
     decreaseQty,
     grandTotal,
     placeOrder,
+    handleRemoveItem
   };
 }

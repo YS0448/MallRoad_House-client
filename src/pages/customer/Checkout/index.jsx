@@ -22,6 +22,7 @@ const Checkout = () => {
     decreaseQty,
     grandTotal,
     placeOrder,
+    handleRemoveItem
   } = useCheckout(initialItems);
 
   if (loading) return <p>Loading cart items...</p>;
@@ -58,6 +59,7 @@ const Checkout = () => {
                   decreaseQty={decreaseQty}
                   paymentMethod="cod"
                   grandTotal={grandTotal}
+                  handleRemoveItem={handleRemoveItem}
                 />
               </div>
             </div>

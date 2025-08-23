@@ -24,9 +24,13 @@ const MenuCard = ({ item, activeTab }) => {
 
   const handleAddToCart=async() => {
     try {
+      console.log('localItem:', localItem);
       const payload = {
-        item_id: item.item_id,      // ensure item_id exists in item object
-        quantity: 1          // default to 1; you can customize
+        meal_id: localItem.meal_id,      
+        quantity: 1,          
+        description: localItem.description,
+        menu_type: 'takeaway'      
+
       };
       const res = await apiCall("POST", "api/cart", payload);
       showToast("success","Item added to cart!" );
@@ -45,9 +49,11 @@ const MenuCard = ({ item, activeTab }) => {
 
 const handleQuantityChange = async (cart_id, delta) => {
 
-    // const item = item.find(item => item.cart_id === cart_id);
-    const newQuantity = item.quantity + delta;
-    // if (newQuantity <= 0) return;
+    let newQuantity;
+    if (localItem.cart_id === cart_id) {
+      newQuantity = localItem.quantity + delta;
+      console.log("newQuantity:", newQuantity);
+    }
 
     try {
       await apiCall("PUT", `/api/cart/${cart_id}`, { quantity: newQuantity });
@@ -66,10 +72,20 @@ const handleQuantityChange = async (cart_id, delta) => {
 
   const handleOrder=async()=>{
     try{
-      if(role === 'guest'){
+      if(role === 'guest' || role === 'admin'){
         navigate('/login');
       }else{
-        navigate('/checkout', { state: { items: [item] } });
+        
+      const updatedItem = {
+        ...localItem,
+        quantity: localItem.quantity === 0 ? 1 : localItem.quantity
+      };
+      setLocalItem(updatedItem); // update state
+      console.log('updatedItem___:', updatedItem);
+      
+        
+        navigate('/checkout', { state: { items: [updatedItem] } });
+        
       }
       
     }catch(error){
@@ -124,7 +140,8 @@ const handleQuantityChange = async (cart_id, delta) => {
 
         {/* Bottom content */}
         <div className="card-footer-section mt-3">
-          {(localItem.status === "available" && activeTab==="takeaway" && activeTab==="dining")&& (
+          {console.log("localItem.status", activeTab)}
+          {(localItem.status === "available" && (activeTab==="takeaway" || activeTab==="dining"))&& (
 
             <p className="card-text fw-bold">£{localItem.price}</p>
           )}
@@ -138,20 +155,20 @@ const handleQuantityChange = async (cart_id, delta) => {
 
           {/* Buttons */}
           {(localItem.status === "available" && activeTab==="takeaway" )&& (
-            <div className="mt-3 d-flex gap-2">
+            <div className="mt-3 ">
 
             {localItem.quantity !== null && localItem.quantity > 0 ? (
                 <>
                    <div className="quantity-controls d-flex align-items-center gap-2 px-2">
                      <button
-                       className="btn btn-sm btn-outline-secondary"
+                       className="btn btn-sm btn-outline-secondary bg-secondary text-light"
                        onClick={() => handleQuantityChange(localItem.cart_id, -1)}
                      >
                        -
                      </button>
                      <span>{localItem.quantity}</span>
                      <button
-                       className="btn btn-sm btn-outline-secondary"
+                       className="btn btn-sm btn-outline-secondary bg-secondary text-light"
                        onClick={() => handleQuantityChange(localItem.cart_id, 1)}
                      >
                        +
@@ -159,9 +176,9 @@ const handleQuantityChange = async (cart_id, delta) => {
                    </div>
                 </>
             ):(
-            <button className="btn btn-sm btn-outline-primary w-100" onClick={handleAddToCart}>Add to Cart</button>
+            <button className="btn btn-warning w-100" onClick={handleAddToCart}>🛒 Add to Cart</button>
             )}
-              <button className="btn btn-sm btn-primary w-100" onClick={handleOrder} >Order Now</button>
+              <button className="btn btn-success w-100 mt-2" onClick={handleOrder} >🚀 Order Now</button>
             
             </div>
           )}

@@ -4,6 +4,7 @@ import apiCall from "../../../../api/apiCall";
 import { useAuth } from "../../../../context/AuthContext";
 
 const DiningSection = ({ activeTab }) => {
+  console.log('activeTab:', activeTab);
   const { user, role } = useAuth();
   const [menuData, setMenuData] = useState({});
   const [page, setPage] = useState(1);

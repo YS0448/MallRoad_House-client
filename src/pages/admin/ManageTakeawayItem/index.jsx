@@ -35,8 +35,8 @@ const ManageTakeawayItem = () => {
         <tbody>
           {items.length > 0 ? (
             items.map((item) => (
-              <tr key={item.item_id}>
-                <td>{item.item_id}</td>
+              <tr key={item.meal_id}>
+                <td>{item.meal_id}</td>
                 <td>{item.category_name}</td>
                 <td>{item.item_name}</td>
                 <td>{item.description}</td>
@@ -51,7 +51,7 @@ const ManageTakeawayItem = () => {
                     "None"
                   )}
                 </td>
-                <td>₹{item.price}</td>
+                <td>£{item.price}</td>
                 <td>
                   {item.status === "available" ? (
                     <span className="badge bg-success">Available</span>

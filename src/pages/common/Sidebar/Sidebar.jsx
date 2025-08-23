@@ -88,6 +88,11 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
                   Add Drinks Item
                 </Link>
               </li>
+              <li>
+                <Link to="/admin/set_meal/add" className="dropdown-item">
+                  Set Meal
+                </Link>
+              </li>
             </ul>
           </li>
 

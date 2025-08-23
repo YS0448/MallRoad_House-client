@@ -45,9 +45,31 @@ export default function useOrderDetails(initialItems = []) {
   };
 
   const grandTotal = items.reduce(
-    (sum, item) => sum + Number(item.price) * Number(item.quantity),
+    (sum, item) => sum + (Number(item.price) + Number(item.extra_charge || 0) )  * Number(item.quantity),
     0
   );
+
+
+const handleRemoveItem = async (item) => {
+  try {
+    // Remove from frontend state first
+    setItems(prev => prev.filter(i => 
+      !(i.meal_id === item.meal_id && i.menu_type === item.menu_type)
+    ));
+
+    // Only call API if cart_id exists
+    if (item.cart_id) {
+      await apiCall("DELETE", `/api/cart/${item.cart_id}`);
+    }
+  } catch (err) {
+    console.error("Error removing item:", err);
+  }
+};
+
+
+
+// await apiCall("DELETE", `/api/cart/${cart_id}`);
+
 
   return {
     items,
@@ -56,5 +78,6 @@ export default function useOrderDetails(initialItems = []) {
     decreaseQty,
     grandTotal,
     setItems,
+    handleRemoveItem
   };
 }

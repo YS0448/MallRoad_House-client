@@ -3,17 +3,24 @@ import '../../../assets/styles/customer/MyOrders/MyOrders.css';
 import React, { useEffect, useState } from "react";
 import CustomHeroSection from "../../components/layout/CustomHeroSection";
 import no_data_img from '../../../assets/media/image/no_data.jpg';
-
+import DescriptionAccordion from "../../common/DescriptionAccordion";
 const OrderItemRow = ({ item }) => {
-  const { order_item_id, item_name, quantity, per_item_price, total_price } = item;
+  const { order_item_id, item_name, quantity, per_item_price, total_price, description } = item;
 
   return (
-    <tr key={order_item_id}>
-      <td>{item_name || "Item"}</td>
-      <td>{quantity}</td>
-      <td>₹{per_item_price.toFixed(2)}</td>
-      <td>₹{total_price.toFixed(2)}</td>
-    </tr>
+    <>
+      <tr key={order_item_id}>
+        <td>{item_name || "Item"}</td>
+        <td>{quantity}</td>
+        <td>£{per_item_price.toFixed(2)}</td>
+        <td>£{total_price.toFixed(2)}</td>
+      </tr>
+      <tr>
+        <td colSpan={4}>
+          <DescriptionAccordion description={JSON.parse(description)} />
+        </td>
+      </tr>
+    </>
   );
 };
 
@@ -81,7 +88,7 @@ const MyOrders = () => {
           return (
             <article key={order_id} className="order-card" aria-labelledby={`order-${order_id}`}>
               <header>
-                <h2 id={`order-${order_id}`}>Order #{order_id}</h2>
+                <h2 id={`order-${order_id}`}>Order ID #{order_id}</h2>
                 <p>
                   Status:{" "}
                   <strong className={`status-badge status-${status.toLowerCase()}`}>
@@ -110,7 +117,7 @@ const MyOrders = () => {
                     <td colSpan="3" style={{ textAlign: "right", fontWeight: "bold" }}>
                       Grand Total:
                     </td>
-                    <td style={{ fontWeight: "bold" }}>₹{grandTotal.toFixed(2)}</td>
+                    <td style={{ fontWeight: "bold" }}>£{grandTotal.toFixed(2)}</td>
                   </tr>
                 </tfoot>
               </table>

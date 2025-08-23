@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import apiCall from "../../../api/apiCall";
 import '../../../assets/styles/admin/dashboard/AdminDashboard.css';
 import Loader from '../../common/Loader';
@@ -40,32 +39,32 @@ const AdminDashboard = () => {
       {/* Statistic Cards */}
       <div className="row g-4 mb-4">
         <div className="col-md-3">
-          <div className="card text-white bg-primary shadow">
-            <div className="card-body">
+          <div className="card text-white shadow">
+            <div className="card-body bg-primary rounded-3">
               <h5 className="card-title">Total Orders</h5>
               <h3>{dashboardStats?.totalOrders}</h3>
             </div>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="card text-white bg-success shadow">
-            <div className="card-body">
+          <div className="card text-white  shadow">
+            <div className="card-body bg-success rounded-3">
               <h5 className="card-title">Revenue</h5>
               <h3>£{dashboardStats?.revenue}</h3>
             </div>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="card text-white bg-warning shadow">
-            <div className="card-body">
+          <div className="card text-white  shadow ">
+            <div className="card-body bg-warning rounded-3">
               <h5 className="card-title">Active Items</h5>
               <h3>{dashboardStats?.activeItems}</h3>
             </div>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="card text-white bg-danger shadow">
-            <div className="card-body">
+          <div className="card text-white  shadow">
+            <div className="card-body bg-danger rounded-3">
               <h5 className="card-title">Pending Orders</h5>
               <h3>{dashboardStats?.pendingOrders}</h3>
             </div>
@@ -77,7 +76,7 @@ const AdminDashboard = () => {
       <div className="card shadow border-0">
         <div className="card-header bg-white fw-bold">Recent Orders</div>
         <div className="card-body table-responsive">
-          <table className="table table-striped table-hover align-middle">
+          <table className="table table-striped table-hover align-middle ">
             <thead>
               <tr>
                 <th>Order ID</th>
@@ -88,7 +87,8 @@ const AdminDashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {recentOrders.map((order) => {
+              {recentOrders.length > 0 ? (
+              recentOrders.map((order) => {
                 let statusClass = "";
                 if (order.status.toLowerCase() === "pending") {
                   statusClass = "status-pending";
@@ -111,8 +111,15 @@ const AdminDashboard = () => {
                     </td>
                     <td>{new Date(order.date.replace(" ", "T") + "Z").toLocaleString()}</td>
                   </tr>
-                );
-              })}
+                );                
+              })
+              ):(
+                <tr>
+                  <td colSpan="5" className="text-center">No recent orders found.</td>
+                </tr>
+              )}
+
+
             </tbody>
           </table>
         </div>
