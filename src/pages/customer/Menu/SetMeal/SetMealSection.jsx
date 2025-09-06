@@ -16,7 +16,6 @@ const SetMealSection = () => {
         response = await apiCall("GET", `/api/getSetMealMenu?user_id=${user.user_id}`);
       }
 
-      console.log("response:", response.data.data);
       setMeals(response.data.data || []);
     } catch (error) {
       console.error("Failed to fetch set meal data:", error);
@@ -33,7 +32,7 @@ const SetMealSection = () => {
         {meals.length > 0 ? (
           meals.map((meal) => (
             <div className="col-md-6 mb-4" key={meal.set_meal_id}>
-              <SetMealItem
+              {/* <SetMealItem
                 meal_id={meal.set_meal_id}
                 cart_id={meal.cart_id}
                 item_name={meal.set_meal_name}
@@ -43,7 +42,8 @@ const SetMealSection = () => {
                 quantity={meal.quantity || 0 }
                 description={meal.description || {}}
                 status= {meal.status}
-              />
+              /> */}
+              <SetMealItem data={meal}/>
             </div>
           ))
         ) : (

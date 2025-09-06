@@ -1,10 +1,27 @@
 .menu-card {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 470px;
   /* min-height: 440px; */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
+
+.menu-card-takeaway{
+  display: flex;
+  flex-direction: column;
+  height: 470px;
+}
+.menu-card-dining{
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+.menu-card-drinks{
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+}
+
 
 .menu-card-img {
   height: 200px;
@@ -24,14 +41,14 @@
   font-weight: 600;
 }
 
-.description-toggle {
+/* .description-toggle {
   margin-top: 0.5rem;
   font-size: 0.95rem;
   color: #555;
   cursor: pointer;
 
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* show only 2 lines */
+  -webkit-line-clamp: 2; 
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -41,6 +58,11 @@
 .description-toggle.expanded {
   -webkit-line-clamp: unset;
   overflow: visible;
+} */
+
+.card-description{
+  height: 50px;
+  overflow: auto;
 }
 
 .allergen-icons-container {

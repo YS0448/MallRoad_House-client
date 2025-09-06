@@ -87,12 +87,9 @@ const handleSubmit = async (e) => {
     return;
   }
 
-  console.log("Form submitted with data:", formData);
   try {
     const data = { ...formData, user_id: user?.user_id || '' , role: role};
-    console.log('data:', data);
     const response = await apiCall("POST", "/api/contact_us", data);
-    console.log("response:", response);
     
     showToast('success', 'Thank you for contacting us. We will get back to you shortly.')
     setFormData(initialFormData);

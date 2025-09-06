@@ -3,105 +3,108 @@ import "../../../../assets/styles/customer/Menu/setMeal.css";
 import apiCall from "../../../../api/apiCall";
 import { useAuth } from "../../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { Toast ,showToast } from '../../../common/AlertService'
+const SetMealItem = ({ data }) => {
+  let {
+    set_meal_id: meal_id,
+    cart_id,
+    set_meal_name: item_name,
+    price: basePrice,
+    image_path,
+    categories = {},
+    quantity = 0,
+    description = {},
+    status,    
+  } = data;
 
-const SetMealItem = ({ meal_id, cart_id, item_name, price, image_path, categories = {}, quantity = 0, description = {}, status }) => {
   const { role } = useAuth();
   const navigate = useNavigate();
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
   const [mealQty, setMealQty] = useState(quantity);
-  console.log('description:', description);
-  const [selectedItems, setSelectedItems] = useState(description);
+  const [selectedItems, setSelectedItems] = useState(description || {});
+  const [cartId, setCartId] = useState(data.cart_id || null);
 
-  // ✅ Initialize selectedItems with objects (normal vs extra by charge)
-useEffect(() => {
-  const initialSelected = {};
-
-  Object.entries(categories).forEach(([catName, category]) => {
-    // If description already has this category -> reuse it
-    if (description && description[catName]) {
-      initialSelected[catName] = description[catName];
-    } else {
-      // otherwise initialize fresh
-      initialSelected[catName] = {
-        normal:
-          catName === "sides"
-            ? category.items
-                .filter((i) => Number(i.extra_charge) === 0)
-                .map((i) => ({
-                  id: i.set_meal_item_id,
-                  name: i.item_name,
-                  extra_charge: 0,
-                }))
-            : [],
-        extra: [],
-      };
-    }
-  });
-
-  setSelectedItems(initialSelected);
-}, [categories, description]);
-
-
-  // ✅ Handle selection change with max_choices
-const handleCheckboxChange = async (catName, item, group, maxChoices) => {
-  const newItem = {
-    id: item.set_meal_item_id,
-    name: item.item_name,
-    extra_charge: Number(item.extra_charge) || 0,
-  };
-
-  setSelectedItems((prev) => {
-    const prevCategory = prev[catName] || { normal: [], extra: [] };
-    const selectedGroup = [...prevCategory[group]];
-    const allowedChoices = group === "extra" ? 1 : maxChoices;
-
-    const alreadySelected = selectedGroup.find((it) => it.id === newItem.id);
-
-    let updatedState;
-
-    if (alreadySelected) {
-      // uncheck
-      updatedState = {
-        ...prev,
-        [catName]: {
-          ...prevCategory,
-          [group]: selectedGroup.filter((it) => it.id !== newItem.id),
-        },
-      };
-    } else {
-      // enforce max choices
-      if (selectedGroup.length >= allowedChoices) {
-        if (group === "extra") {
-          updatedState = {
-            ...prev,
-            [catName]: {
-              ...prevCategory,
-              [group]: [newItem], // replace
-            },
-          };
-        } else {
-          return prev; // block for normal if max reached
-        }
+  // ✅ Initialize selectedItems
+  useEffect(() => {
+    const initialSelected = {};
+    Object.entries(categories).forEach(([catName, category]) => {
+      if (description && description[catName]) {
+        initialSelected[catName] = description[catName];
       } else {
+        initialSelected[catName] = {
+          normal:
+            catName === "sides"
+              ? category.items
+                  .filter((i) => Number(i.extra_charge) === 0)
+                  .map((i) => ({
+                    id: i.set_meal_item_id,
+                    name: i.item_name,
+                    extra_charge: 0,
+                  }))
+              : [],
+          extra: [],
+        };
+      }
+    });
+    setSelectedItems(initialSelected);
+  }, [categories, description]);
+
+  // ✅ Handle selection change
+  const handleCheckboxChange = async (catName, item, group, maxChoices) => {
+    const newItem = {
+      id: item.set_meal_item_id,
+      name: item.item_name,
+      extra_charge: Number(item.extra_charge) || 0,
+    };
+
+    setSelectedItems((prev) => {
+      const prevCategory = prev[catName] || { normal: [], extra: [] };
+      const selectedGroup = [...prevCategory[group]];
+      const allowedChoices = group === "extra" ? 1 : maxChoices;
+      const alreadySelected = selectedGroup.find((it) => it.id === newItem.id);
+
+      let updatedState;
+
+      if (alreadySelected) {
         updatedState = {
           ...prev,
           [catName]: {
             ...prevCategory,
-            [group]: [...selectedGroup, newItem],
+            [group]: selectedGroup.filter((it) => it.id !== newItem.id),
           },
         };
+      } else {
+        if (selectedGroup.length >= allowedChoices) {
+          if (group === "extra") {
+            updatedState = {
+              ...prev,
+              [catName]: {
+                ...prevCategory,
+                [group]: [newItem], // replace
+              },
+            };
+          } else {
+            return prev; // block normal if max reached
+          }
+        } else {
+          updatedState = {
+            ...prev,
+            [catName]: {
+              ...prevCategory,
+              [group]: [...selectedGroup, newItem],
+            },
+          };
+        }
       }
-    }
 
-    // ✅ After updating state, trigger backend API
-    if(cart_id){
-      handleQtyChange();
-    }
-
-    return updatedState;
-  });
-};
+      // Sync with backend if exists in cart
+      if (cartId) {
+        handleQtyChange();
+      }
+      return updatedState;
+    });
+  };
 
   // ✅ Calculate extra charges
   const getExtraChargeTotal = () => {
@@ -116,33 +119,35 @@ const handleCheckboxChange = async (catName, item, group, maxChoices) => {
     return total;
   };
 
-  price = (Number(price) + getExtraChargeTotal())
-  const totalAmount = price * (mealQty || 1);
+  const totalPrice = (Number(basePrice) + getExtraChargeTotal());
+  const totalAmount = totalPrice * (mealQty || 1);
 
-  // ✅ Quantity change + sync to API & save meal item changes
+  // ✅ Quantity change
   const handleQtyChange = async (type) => {
-    if(cart_id){
-      console.log('type:', type);
-      let newQty = mealQty;
-      if (type === "inc") newQty = mealQty + 1;
-      if (type === "dec") newQty = mealQty > 1 ? mealQty - 1 : 0;
-      setMealQty(newQty);    
-      try {
-        await apiCall("PUT", `/api/cart/${cart_id}`, {
-          quantity: newQty,
-          description: JSON.stringify(selectedItems),
-        });
-      } catch (err) {
-        console.error("Error updating quantity", err);
-      }  
-    }else{
-      return;
-    }
+    if (!cartId) return;
+
+    let newQty = mealQty;
+    if (type === "inc") newQty = mealQty + 1;
+    if (type === "dec") newQty = mealQty > 1 ? mealQty - 1 : 0;
+    setMealQty(newQty);
     
+
+    try {
+      let response= await apiCall("PUT", `/api/cart/${cartId}`, {
+        quantity: newQty,
+        description: JSON.stringify(selectedItems),
+      });
+   
+      if(response.data.message ==="Cart item removed"){
+        setCartId(null)
+      }
+    } catch (err) {
+      console.error("Error updating quantity", err);
+      showToast('error',err?.message || 'Failed to Update')
+    }
   };
 
-
-
+  // ✅ Add to cart
   const handleAddToCart = async () => {
     const payload = {
       meal_id,
@@ -151,17 +156,22 @@ const handleCheckboxChange = async (catName, item, group, maxChoices) => {
       menu_type: "set_meal",
       totalAmount,
     };
-    console.log("Add to cart payload:", payload);
 
     try {
       const response = await apiCall("POST", "api/cart", payload);
-      console.log('response:', response);
       setMealQty(1);
+      if(response?.data?.cart_id){
+        // cart_id = response.data.cart_id
+        setCartId(cart_id)
+      }
+      
     } catch (error) {
       console.error("Add to cart failed:", error);
+      showToast('error',error?.message || 'Failed to add item into cart')
     }
   };
 
+  // ✅ Order Now
   const handleOrder = async () => {
     try {
       if (role === "guest" || role === "admin") {
@@ -169,11 +179,11 @@ const handleCheckboxChange = async (catName, item, group, maxChoices) => {
       } else {
         let localItem = {
           meal_id,
-          cart_id,
+          cart_id: cartId,
           item_name,
-          price,
+          price: totalPrice,
           image_path,
-          quantity: quantity === 0 ? 1 : quantity,
+          quantity: quantity > 0 ? quantity: 1,
           description: selectedItems,
           status,
         };
@@ -185,6 +195,8 @@ const handleCheckboxChange = async (catName, item, group, maxChoices) => {
   };
 
   return (
+    <>
+    <Toast/>    
     <div className="shadow p-4 set-meal-row">
       <h4 className="set-meal-title mb-3">{item_name}</h4>
       <div className="row align-items-center">
@@ -205,9 +217,9 @@ const handleCheckboxChange = async (catName, item, group, maxChoices) => {
                 {/* Normal items */}
                 {category.items.some((item) => Number(item.extra_charge) === 0) && (
                   <>
-                    <p className="fw-semibold mb-1">                      
-                      Normal {" "}
-                      {category.max_choices === 0 ? "": `(Choose up to ${category.max_choices })` } 
+                    <p className="fw-semibold mb-1">
+                      Normal{" "}
+                      {category.max_choices === 0 ? "" : `(Choose up to ${category.max_choices})`}
                     </p>
 
                     {category.items
@@ -225,12 +237,7 @@ const handleCheckboxChange = async (catName, item, group, maxChoices) => {
                             readOnly={catName === "sides"}
                             onChange={() =>
                               catName !== "sides" &&
-                              handleCheckboxChange(
-                                catName,
-                                item,
-                                "normal",
-                                category.max_choices
-                              )
+                              handleCheckboxChange(catName, item, "normal", category.max_choices)
                             }
                           />
                           <label htmlFor={`${catName}-normal-${item.set_meal_item_id}`} className="ms-2">
@@ -257,9 +264,7 @@ const handleCheckboxChange = async (catName, item, group, maxChoices) => {
                                 (it) => it.id === item.set_meal_item_id
                               ) || false
                             }
-                            onChange={() =>
-                              handleCheckboxChange(catName, item, "extra", 1)
-                            }
+                            onChange={() => handleCheckboxChange(catName, item, "extra", 1)}
                           />
                           <label htmlFor={`${catName}-extra-${item.set_meal_item_id}`} className="ms-2">
                             {item.item_name}{" "}
@@ -287,6 +292,7 @@ const handleCheckboxChange = async (catName, item, group, maxChoices) => {
         </div>
 
         {/* Buttons */}
+        
         <div className="d-md-flex text-center ">
           {mealQty ? (
             <div className="d-inline-flex align-items-center rounded p-2">
@@ -304,18 +310,29 @@ const handleCheckboxChange = async (catName, item, group, maxChoices) => {
                 +
               </button>
             </div>
-          ) : (
-            <button className="mb-2 setmeal_addcart_btn ms-2" onClick={handleAddToCart}>
+          ) : 
+          status==='available' ? (
+              <button className="mb-2 setmeal_addcart_btn ms-2" onClick={handleAddToCart}>
               🛒 Add to Cart
             </button>
-          )}
-
+            ):(
+              <button className="mb-2 setmeal_out_of_order_btn ms-2" onClick={handleAddToCart}>
+               Out Of Stock
+            </button>
+            )
+            
+          }
+          { status==='available' ? (
           <button className="mb-2 setmeal_order_btn ms-2" onClick={handleOrder}>
             🚀 Order Now
           </button>
+          ):('')
+        }
+
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -13,7 +13,6 @@ const AdminDashboard = () => {
     const fetchDashboardData = async () => {
       try {
         const res = await apiCall("GET", "/admin/dashboard");
-        console.log("res:", res);
         setDashboardStats(res.data);
         setRecentOrders(res.data.recentOrders);
       } catch (error) {

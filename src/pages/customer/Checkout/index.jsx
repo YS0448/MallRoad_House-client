@@ -11,7 +11,6 @@ import useCheckout from "./useCheckout";
 const Checkout = () => {
   const location = useLocation();
   const initialItems = location.state?.items || [];
-  console.log('initialItems:', initialItems);
 
   const {
     items,

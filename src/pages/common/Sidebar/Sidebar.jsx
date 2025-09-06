@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../../../assets/styles/components/common/Sidebar.css";
 import { useAuth } from "../../../context/AuthContext";
 import { FaTachometerAlt, FaUsers, FaImages } from "react-icons/fa";
-import { AiFillProduct, AiOutlineProduct } from "react-icons/ai";
+import { AiFillProduct, AiOutlineLogout } from "react-icons/ai";
 import LogoutModal from "../LogoutModal";
 
 const Sidebar = ({ collapsed, toggleSidebar }) => {
@@ -21,37 +21,46 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
 
   return (
     <>
+      {/* Overlay (for mobile view) */}
+      {!collapsed && <div className="sidebar__overlay" onClick={toggleSidebar}></div>}
+
       {/* Sidebar */}
-      <div className={`sidebar text-white ${collapsed ? "collapsed" : ""} `}>
-        <button className="btn-close close_btn" onClick={toggleSidebar}></button>
-        <h4 className="sidebar_title">{"Admin Panel"}</h4>
-        <ul className="nav nav-pills flex-column mb-auto">
+      <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
+        <button className="sidebar__close-btn" onClick={toggleSidebar}>
+          ✕
+        </button>
+
+        <h4 className="sidebar__title">Admin Panel</h4>
+
+        <ul className="sidebar__nav nav flex-column">
           <li className="nav-item">
-            <Link to="/admin/dashboard" className="nav-link text-white d-flex align-items-center gap-2">
+            <Link to="/admin/dashboard" className="sidebar__link nav-link">
               <FaTachometerAlt />
-              {"Dashboard"}
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/admin/ManageUsers" className="nav-link text-white d-flex align-items-center gap-2">
-              <FaUsers />
-              {"Users"}
+              <span>Dashboard</span>
             </Link>
           </li>
 
+          <li className="nav-item">
+            <Link to="/admin/ManageUsers" className="sidebar__link nav-link">
+              <FaUsers />
+              <span>Users</span>
+            </Link>
+          </li>
+
+          {/* Gallery */}
           <li className="nav-item dropdown">
             <Link
               to="#"
-              className="nav-link dropdown-toggle text-white d-flex align-items-center gap-2"
+              className="sidebar__link nav-link dropdown-toggle"
               id="galleryDropdown"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               <FaImages />
-              {"Gallery"}
+              <span>Gallery</span>
             </Link>
-            <ul className="dropdown-menu ms-3" aria-labelledby="galleryDropdown">
+            <ul className="dropdown-menu" aria-labelledby="galleryDropdown">
               <li>
                 <Link to="/admin/Gallery/add" className="dropdown-item">
                   Add Gallery Item
@@ -60,19 +69,21 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
             </ul>
           </li>
 
+          {/* Menu */}
           <li className="nav-item dropdown">
             <Link
               to="#"
-              className="nav-link dropdown-toggle text-white d-flex align-items-center gap-2"
+              className="sidebar__link nav-link dropdown-toggle"
               id="menuDropdown"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               <AiFillProduct />
-              {"Menu"}
+              <span>Menu</span>
             </Link>
-            <ul className="dropdown-menu ms-3" aria-labelledby="menuDropdown">
+            <ul className="dropdown-menu" aria-labelledby="menuDropdown">
+              <li className="fw-bold px-2">Add Items</li>
               <li>
                 <Link to="/admin/takeaway/add" className="dropdown-item">
                   Add Takeaway Item
@@ -93,23 +104,31 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
                   Set Meal
                 </Link>
               </li>
+              <li><hr /></li>
+              <li className="fw-bold px-2">Manage Items</li>
+              <li>
+                <Link to="/admin/takeaway/manage" className="dropdown-item">
+                  Manage Takeaway Items
+                </Link>
+              </li>
             </ul>
           </li>
 
+          {/* Logout */}
           <li>
             <div
-              className="nav-link"
+              className="sidebar__link nav-link"
               onClick={() => setShowLogoutModal(true)}
               style={{ cursor: "pointer" }}
             >
-              <AiOutlineProduct />
-              {"Logout"}
+              <AiOutlineLogout />
+              <span>Logout</span>
             </div>
           </li>
         </ul>
-      </div>
+      </aside>
 
-      {/* Logout Modal Component */}
+      {/* Logout Modal */}
       <LogoutModal
         show={showLogoutModal}
         onCancel={() => setShowLogoutModal(false)}

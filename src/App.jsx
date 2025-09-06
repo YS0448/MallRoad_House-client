@@ -52,7 +52,6 @@ import TimeRestrictedGuard from "./guard/TimeRestrictedGuard";
 
 function AppLayout() {
   const { user, role, loading, setUser, setRole } = useAuth();
-  console.log("role:", role);
 
   // useEffect(() => {
   //   const fetchUser = async () => {
@@ -119,13 +118,15 @@ function AppLayout() {
         <Route element={<AdminGuard/>}>
           <Route element={<AdminLayout />}>
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            {/* Add Data */}
             <Route path="/admin/takeaway/add" element={<AddTakeawayItem />} />
             <Route path="/admin/dining/add" element={<AddDiningItem />} />
             <Route path="/admin/drinks/add" element={<AddDrinksItem />} />
-            <Route path="/admin/takeaway/manage" element={<ManageTakeawayItem />} />
-            <Route path="/admin/manageUsers" element={<ManageUsers />} />
             <Route path="/admin/gallery/add" element={<AddGalleryItem />} />
             <Route path="/admin/set_meal/add" element={<AddSetMeal />} />
+            {/* Manage Data*/}
+            <Route path="/admin/takeaway/manage" element={<ManageTakeawayItem />} />
+            <Route path="/admin/manageUsers" element={<ManageUsers />} />
           </Route>
         </Route>        
 

@@ -37,7 +37,8 @@
 /* #ffc107 */
 /* #28a745 */
 .setmeal_order_btn, 
-.setmeal_addcart_btn{
+.setmeal_addcart_btn,
+.setmeal_out_of_order_btn{
   padding: 5px 10px;
   border-radius: 6px;
   font-weight: 600;
@@ -66,4 +67,10 @@
 
 .set-meal-row .extra-charge-catogery-header{
   color: olivedrab;
+}
+
+.setmeal_out_of_order_btn{
+  color: white;
+  background-color: red ;
+  border: red;
 }

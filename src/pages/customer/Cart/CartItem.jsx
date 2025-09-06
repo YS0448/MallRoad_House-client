@@ -5,7 +5,6 @@ import DescriptionAccordion from "../../../pages/common/DescriptionAccordion";
 const CartItem = ({ item, onQuantityChange, onRemove, onCheckboxChange }) => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const updatedPrice = Number(item.price) + Number(item.extra_charge || 0);
-      console.log('item.description:', item.description);
 
   return (
     <div className="cart-item row mb-3 p-2 border rounded align-items-center">

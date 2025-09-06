@@ -38,7 +38,6 @@ const MyOrders = () => {
       setLoading(true);
       try {
         const response = await apiCall("GET", `/api/orders/my?limit=${limit}&offset=${offset}`);
-        console.log('response:', response.data);
         setOrders(response?.data?.data || []);
       } catch (err) {
         setError("Failed to load orders");

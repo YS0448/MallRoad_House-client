@@ -12,7 +12,6 @@ const OrderDetails = ({
   grandTotal,
   handleRemoveItem
 }) => {
-  console.log('items:', items);
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
   return (

@@ -57,9 +57,6 @@ useEffect(() => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      console.log("Form Data:", formData);
-      console.log("Selected Allergens:", selectedAllergens);
-
       const data = new FormData();
       Object.entries(formData).forEach(([key, value]) => {
         if (value !== null) data.append(key, value);
@@ -69,7 +66,6 @@ useEffect(() => {
       data.append("allergens", selected_allergens);
 
       const response = await apiCall("POST", "/admin/createTakeAwayMenu", data);
-      console.log("response:", response);
       showToast("success", "Takeaway item submitted successfully");
       // handleReset();
     } catch (error) {

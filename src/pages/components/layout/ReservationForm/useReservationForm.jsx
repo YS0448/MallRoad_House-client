@@ -79,7 +79,6 @@ const handleSubmit = async (e) => {
 
   try {
     const res = await apiCall("POST", "/reservations", formData);
-    console.log("Reservation successful:", res.data);
 
     showToast("success", "Your reservation has been made successfully.");
     resetForm()

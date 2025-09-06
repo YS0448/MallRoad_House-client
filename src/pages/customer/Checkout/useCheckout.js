@@ -45,7 +45,6 @@ export default function useCheckout(initialItems = []) {
         totalAmount: grandTotal,
     };
     
-    console.log('orderPayload:',  );
     try {
       const response = await apiCall("POST", "/api/orders", orderPayload);
       showToast('success','Order placed successfully.'+ response.data.orderId)

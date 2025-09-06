@@ -80,7 +80,6 @@ export const useSetMealForm = (initialState, initialCategory) => {
 
 
   const handleSubmit = async () => {
-    console.log('formData:', formData);
     const validation = validateSetMealForm(formData);
     if (!validation.valid) return alert(validation.message);
 

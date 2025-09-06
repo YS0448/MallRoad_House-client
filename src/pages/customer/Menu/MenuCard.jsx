@@ -12,9 +12,9 @@ const MenuCard = ({ item, activeTab }) => {
   const [showFullDescription, setShowFullDescription] = useState(false);
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
-  const toggleDescription = () => {
-    setShowFullDescription((prev) => !prev);
-  };
+  // const toggleDescription = () => {
+  //   setShowFullDescription((prev) => !prev);
+  // };
 
   const truncateText = (text, wordLimit = 12) => {
     const words = text.split(" ");
@@ -22,9 +22,16 @@ const MenuCard = ({ item, activeTab }) => {
     return words.slice(0, wordLimit).join(" ") + "...";
   };
 
+  // formate title
+  const toTitleCase = (str) => {
+    return str
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(" ");
+  };
+
   const handleAddToCart=async() => {
     try {
-      console.log('localItem:', localItem);
       const payload = {
         meal_id: localItem.meal_id,      
         quantity: 1,          
@@ -52,7 +59,6 @@ const handleQuantityChange = async (cart_id, delta) => {
     let newQuantity;
     if (localItem.cart_id === cart_id) {
       newQuantity = localItem.quantity + delta;
-      console.log("newQuantity:", newQuantity);
     }
 
     try {
@@ -81,7 +87,6 @@ const handleQuantityChange = async (cart_id, delta) => {
         quantity: localItem.quantity === 0 ? 1 : localItem.quantity
       };
       setLocalItem(updatedItem); // update state
-      console.log('updatedItem___:', updatedItem);
       
         
         navigate('/checkout', { state: { items: [updatedItem] } });
@@ -95,7 +100,7 @@ const handleQuantityChange = async (cart_id, delta) => {
 
 
   return (
-    <div className="card h-100 menu-card d-flex flex-column">
+    <div className={`card menu-card-${activeTab} d-flex flex-column`}>
       <img
         src={baseUrl + localItem.image_path}
         className="card-img-top menu-card-img"
@@ -104,7 +109,7 @@ const handleQuantityChange = async (cart_id, delta) => {
       <div className="card-body d-flex flex-column justify-content-between">
         {/* Top content */}
         <div>
-          <h5 className="card-title">{localItem.item_name}</h5>
+          <h5 className="card-title">{toTitleCase(localItem.item_name)}</h5>
 
           <div className="allergen-icons-container d-flex flex-wrap gap-2 mt-2">
             {localItem.allergens_icons &&
@@ -125,7 +130,7 @@ const handleQuantityChange = async (cart_id, delta) => {
               })}
           </div>
 
-          <p
+          {/* <p
             className={`card-text description-toggle ${
               showFullDescription ? "expanded" : ""
             }`}
@@ -135,23 +140,33 @@ const handleQuantityChange = async (cart_id, delta) => {
             {showFullDescription
               ? localItem.description
               : truncateText(localItem.description)}
+          </p> */}
+          <p className="card-text card-description mt-2 ">
+            {localItem.description}
           </p>
+
         </div>
 
         {/* Bottom content */}
-        <div className="card-footer-section mt-3">
-          {console.log("localItem.status", activeTab)}
-          {(localItem.status === "available" && (activeTab==="takeaway" || activeTab==="dining"))&& (
+        <div className="card-footer-section ">
+          {((localItem.status === "available" || localItem.status === "out_of_stock") && (activeTab==="takeaway" || activeTab==="dining"))&& (
 
             <p className="card-text fw-bold">£{localItem.price}</p>
           )}
-          <span
+          
+          {/* <span
             className={`badge ${
               localItem.status === "available" ? "bg-success" : "bg-danger"
             }`}
           >
             {localItem.status === "available" ? "" : "Out of Stock"}
-          </span>
+          </span> */}
+
+            { localItem.status === "out_of_stock" && 
+              (
+                <button className="btn btn-danger w-100 mt-2"  > Out of Stock</button>
+              )
+            }
 
           {/* Buttons */}
           {(localItem.status === "available" && activeTab==="takeaway" )&& (

@@ -12,7 +12,6 @@ const apiCall = async (method = 'GET', endpoint, payload = {}, extraConfig = {})
     // Attach authToken if available
     // const authToken = localStorage.getItem('authToken');
     const authToken = JSON.parse(localStorage.getItem('user-cred'))?.token || '';
-    console.log('authToken11111111111111:', authToken);
     if (authToken) {
       headers['Authorization'] = `Bearer ${authToken}`;
     }
@@ -37,7 +36,7 @@ const apiCall = async (method = 'GET', endpoint, payload = {}, extraConfig = {})
     const response = await api(config);
     return response;
   } catch (error) {
-    console.log(`API Error [${method.toUpperCase()} ${endpoint}]:`, error);
+    console.error(`API Error [${method.toUpperCase()} ${endpoint}]:`, error);
     if(error.response?.data.message === "Unauthorized"){
       localStorage.removeItem('user-cred');
       window.location.href = '/login';

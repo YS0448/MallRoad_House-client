@@ -23,7 +23,6 @@ const CartPage = () => {
       (count, item) => (item.checked ? count + item.quantity : count),
       0
     );
-  console.log('cartItems:', cartItems);
 
     const amount = cartItems.reduce(
       (sum, item) => (item.checked ? sum + (Number(item.price) + Number(item.extra_charge || 0)) * Number(item.quantity) : sum),
@@ -38,7 +37,6 @@ const CartPage = () => {
     setLoading(true);
     try {
       const response = await apiCall("GET", `/api/cart`);
-      console.log("response:", response.data);
 
       const fetchedItems = response.data.items.map((item) => ({
         ...item,
@@ -100,7 +98,6 @@ const CartPage = () => {
 
   const handleCheckout = () => {
     const checkedItems = cartItems.filter((item) => item.checked);
-    console.log("checkedItems:", checkedItems);
     if (checkedItems.length === 0) {
       showToast(
         "error",

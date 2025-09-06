@@ -60,7 +60,6 @@ const LoginForm = () => {
     try {
       setIsSubmitting(true);
       const response = await apiCall("POST", "/auth/login", formData);
-      console.log("Login successful:", response);
       
       // redirect or store token here
       if (response.status === 200) {
@@ -73,9 +72,7 @@ const LoginForm = () => {
 
         // Redirect to home or dashboard
         const currentUser = await me();
-        console.log('currentUser:', currentUser);
       if (currentUser) {
-        console.log('currentUser:', currentUser);
         setUser(currentUser);
         setRole(currentUser.role);
       }

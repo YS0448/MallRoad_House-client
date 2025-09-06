@@ -63,7 +63,6 @@ const SignupForm = () => {
 
     try {
       const response = await apiCall('POST', '/auth/signup', formData);
-      console.log('response:', response);
       showToast('success',response.data.message);      
       resetForm();
 
