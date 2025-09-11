@@ -33,8 +33,8 @@ const Footer = () => {
           {/* Contact Info */}
           <div className="col-md-4 text-center text-md-end">
             <h5 className="mb-3 footer-heading">Get in Touch</h5>
-            <p><FaMapMarkerAlt className="me-2" /> 123 Main Street, London</p>
-            <p><FaPhoneAlt className="me-2" /> +44 123 456 789</p>
+            <p><FaMapMarkerAlt className="me-2" /> Bishopbriggs, Scotland UK, 137 Auchinairn Road, G64 1NF</p>
+            <p><FaPhoneAlt className="me-2" /> 0141 280 0585</p>
             <p><FaEnvelope className="me-2" /> info@mallroadhouse.co.uk</p>
             <div className="d-flex justify-content-center justify-content-md-end gap-3 mt-3">
               <a href="https://www.facebook.com/share/1Aa2gKUW5R/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="social-icon"><FaFacebookF /></a>
