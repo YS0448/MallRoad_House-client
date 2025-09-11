@@ -22,7 +22,7 @@ const DiningForm = () => {
 
   return (
     <div className="takeaway-form container ">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="my-5">
         <h2 className="form-title mb-4">Dining Form</h2>
         <div className="row g-4">
           <div className="col-md-8">
